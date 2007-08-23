@@ -1,6 +1,6 @@
 %define name padevchooser
 %define version 0.9.3
-%define release %mkrel 2
+%define release %mkrel 3
 
 Summary: PulseAudio Device Chooser
 Name: %{name}
@@ -8,7 +8,8 @@ Version: %{version}
 Release: %{release}
 Source0: %{name}-%{version}.tar.bz2
 # gw from debian: use stock gtk icon
-Patch: padevchooser-0.9.3-use_stock_g2.14_icons.dpatch
+Patch0: padevchooser-0.9.3-use_stock_g2.14_icons.dpatch
+Patch1: padevchooser-fix-multiple-network-ifs.patch
 License: GPL
 Group: Sound
 Url: http://0pointer.de/lennart/projects/padevchooser/
@@ -37,7 +38,8 @@ PulseAudio sound server. Specifically it can do for you:
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1 -b .stock-icons
+%patch1 -p0 -b .mutliple-net-ifs
 
 %build
 #export CPPFLAGS=-I%_includedir/alsa
