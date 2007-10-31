@@ -1,16 +1,24 @@
 %define name padevchooser
-%define version 0.9.3
-%define release %mkrel 4
+%define version 0.9.4
+%define rel 1
+%define svn 35
+%if %{svn}
+%define release %mkrel 0.%{svn}.%rel
+%else
+%define release %mkrel %rel
+%endif
 
 Summary: PulseAudio Device Chooser
 Name: %{name}
 Version: %{version}
 Release: %{release}
-Source0: %{name}-%{version}.tar.bz2
+%if %{svn}
+Source0: %{name}-%{svn}.tar.gz
+%else
+Source0: %{name}-%{version}.tar.gz
+%endif
 # gw from debian: use stock gtk icon
-Patch0: padevchooser-0.9.3-use_stock_g2.14_icons.dpatch
-Patch1: padevchooser-fix-multiple-network-ifs.patch
-Patch2: padevchooser-fix-popup-mouse-buttons.patch
+Patch0: padevchooser-fix-multiple-network-ifs.patch
 License: GPL
 Group: Sound
 Url: http://0pointer.de/lennart/projects/padevchooser/
@@ -38,13 +46,17 @@ PulseAudio sound server. Specifically it can do for you:
   Volume Meter, PulseAudio Manager, PulseAudio Preferences
 
 %prep
+%if %{svn}
+%setup -q -n %{name}
+%else
 %setup -q
-%patch0 -p1 -b .stock-icons
-%patch1 -p0 -b .mutliple-net-ifs
-%patch2 -p0 -b .buttons
+%endif
+%patch0 -p0 -b .mutliple-net-ifs
 
 %build
-#export CPPFLAGS=-I%_includedir/alsa
+%if %{svn}
+NOCONFIGURE=1 ./bootstrap.sh
+%endif
 %configure2_5x
 %make
 
