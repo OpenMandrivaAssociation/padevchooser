@@ -24,6 +24,7 @@ Group: Sound
 Url: http://0pointer.de/lennart/projects/padevchooser/
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: gtk2-devel
+BuildRequires: gnome-desktop-devel
 BuildRequires: libglade2.0-devel
 BuildRequires: libGConf2-devel
 BuildRequires: libpulseaudio-devel >= 0.9.5
