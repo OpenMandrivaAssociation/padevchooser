@@ -27,7 +27,7 @@ BuildRequires: gtk2-devel
 BuildRequires: gnome-desktop-devel
 BuildRequires: libglade2.0-devel
 BuildRequires: libGConf2-devel
-BuildRequires: libpulseaudio-devel >= 0.9.5
+BuildRequires: libpulseaudio-devel >= 0.9.7
 BuildRequires: libnotify-devel
 BuildRequires: lynx
 BuildRequires: desktop-file-utils
