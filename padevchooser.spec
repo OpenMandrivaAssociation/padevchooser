@@ -1,6 +1,6 @@
 %define name padevchooser
 %define version 0.9.4
-%define rel 2
+%define rel 3
 %define svn 35
 %if %{svn}
 %define release %mkrel 0.%{svn}.%rel
@@ -79,10 +79,12 @@ install -D -m 0644 %SOURCE1 %{buildroot}%{_miconsdir}/%{name}.png
 install -D -m 0644 %SOURCE2 %{buildroot}%{_iconsdir}/%{name}.png
 
 %post
-%{_bindir}/update-desktop-database %{_datadir}/applications > /dev/null
+%update_desktop_database
+%update_menus
 
 %postun
-if [ -x %{_bindir}/update-desktop-database ]; then %{_bindir}/update-desktop-database %{_datadir}/applications > /dev/null ; fi
+%clean_desktop
+%clean_menus
 
 %clean
 rm -rf %{buildroot}
