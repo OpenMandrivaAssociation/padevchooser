@@ -1,6 +1,6 @@
 %define name padevchooser
 %define version 0.9.4
-%define rel 3
+%define rel 4
 %define svn 35
 %if %{svn}
 %define release %mkrel 0.%{svn}.%rel
@@ -83,7 +83,7 @@ install -D -m 0644 %SOURCE2 %{buildroot}%{_iconsdir}/%{name}.png
 %update_menus
 
 %postun
-%clean_desktop
+%clean_desktop_database
 %clean_menus
 
 %clean
