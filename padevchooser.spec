@@ -1,6 +1,6 @@
 %define name padevchooser
 %define version 0.9.4
-%define rel 4
+%define rel 5
 %define svn 35
 %if %{svn}
 %define release %mkrel 0.%{svn}.%rel
@@ -21,7 +21,7 @@ Source1: %{name}-16.png
 Source2: %{name}-32.png
 # gw from debian: use stock gtk icon
 Patch0: padevchooser-fix-multiple-network-ifs.patch
-License: GPL
+License: GPLv2+
 Group: Sound
 Url: http://0pointer.de/lennart/projects/padevchooser/
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
