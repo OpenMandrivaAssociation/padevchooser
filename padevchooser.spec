@@ -1,6 +1,6 @@
 %define name padevchooser
 %define version 0.9.4
-%define rel 7
+%define rel 8
 %define svn 35
 %if %{svn}
 %define release %mkrel 0.%{svn}.%rel
