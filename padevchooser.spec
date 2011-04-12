@@ -1,6 +1,6 @@
 %define name padevchooser
 %define version 0.9.4
-%define rel 10
+%define rel 11
 %define svn 35
 %if %{svn}
 %define release %mkrel 0.%{svn}.%rel
@@ -21,6 +21,7 @@ Source1: %{name}-16.png
 Source2: %{name}-32.png
 # gw from debian: use stock gtk icon
 Patch0: padevchooser-fix-multiple-network-ifs.patch
+Patch1: padevchooser-libnotify0.7.patch
 License: GPLv2+
 Group: Sound
 Url: http://0pointer.de/lennart/projects/padevchooser/
@@ -56,6 +57,7 @@ PulseAudio sound server. Specifically it can do for you:
 %setup -q
 %endif
 %patch0 -p0 -b .mutliple-net-ifs
+%patch1 -p0 -b .libnotify
 
 %build
 %if %{svn}
@@ -71,7 +73,6 @@ rm -rf %{buildroot}
 sed -i "s/^Icon=.*/Icon=%{name}/" %{buildroot}%{_datadir}/applications/%{name}.desktop
 desktop-file-install --vendor="" \
   --add-category="GTK" \
-  --add-category="X-MandrivaLinux-Multimedia-Sound" \
   --remove-category="Application" \
   --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/%{name}.desktop
 
