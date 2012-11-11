@@ -1,0 +1,16 @@
+Index: src/padevchooser.c
+===================================================================
+--- src/padevchooser.c	(revision 35)
++++ src/padevchooser.c	(working copy)
+@@ -223,6 +223,11 @@
+     const gchar *title;
+     gboolean b;
+ 
++    // Don't bother adding another entry if we have one already
++    c = g_hash_table_lookup(h, i->name);
++    if (c)
++      return NULL;
++
+     m = g_new(struct menu_item_info, 1);
+ 
+     m->name = g_strdup(i->name);
