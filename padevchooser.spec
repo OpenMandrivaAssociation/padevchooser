@@ -24,7 +24,7 @@ Patch0: padevchooser-fix-multiple-network-ifs.patch
 Patch1: padevchooser-libnotify0.7.patch
 License: GPLv2+
 Group: Sound
-Url: http://0pointer.de/lennart/projects/padevchooser/
+Url: https://0pointer.de/lennart/projects/padevchooser/
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: gtk2-devel
 BuildRequires: gnome-desktop-devel
